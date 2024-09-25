@@ -1,0 +1,22 @@
+name: CI Workflow
+
+on: [push]  # This triggers the workflow on every push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # This specifies the operating system to run on
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2  # This checks out your code from the repository
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Specify the Node.js version
+
+    - name: Install dependencies
+      run: npm install  # This installs project dependencies using npm
+
+    - name: Run tests
+      run: npm test  # This runs your project's tests
